@@ -1,0 +1,15 @@
+{
+  "name": "tate-db",
+  "version": "1.0.0",
+  "description": "The tate-store data base",
+  "main": "index.js",
+  "dependencies": {
+    "couchdb": "^0.3.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "“Dominic",
+  "license": "MIT"
+}

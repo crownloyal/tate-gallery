@@ -1,0 +1,14 @@
+{
+  "name": "tate-server",
+  "version": "1.0.0",
+  "description": "Tate web-server, based on express; serves HTML",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "“Dominic",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.2"
+  }
+}
