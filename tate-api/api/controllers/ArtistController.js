@@ -7,35 +7,33 @@
 
 module.exports = {
     find(request, response) {
-        let postId = req.params.id;
+        let artistId = request.params.id;
 
-            if (!postId) return res.badRequest({ err: 'missing post_id field' });
+            if (!artistId) return response.badRequest({ error: 'missing artist_id' });
 
-            Post.findOne({ id: postId })
-                .populate('category')
-                .populate('user')
-                .then(_post => {
+            Artwork.findOne({ id: artistId })
+                .populate('artist')
+                .then(artist => {
 
-                if (!_post) return res.notFound({ err: 'No post found' });
+                if (!_artist) return response.notFound({ error: 'No matching artist found' });
 
-                return res.ok(_post);
+                return response.ok(_artist);
             })
-            .catch(err => res.serverError(err));
+            .catch(err => response.serverError({ error: err }));
     },
 
     findAll(request, response) {
         Artist.find()
-        .populate('artwork')
-        .then(_posts => {
+        .populate('artist')
+        .then(_artists => {
 
-            if (!_posts || _posts.length === 0) {
-                throw new Error('No post found');
+            if (!_artists || _artists.length === 0) {
+                throw new Error('No artist found');
             }
-            return res.ok(_posts);
+            return response.ok(_artists);
 
         })
-        .catch(err => res.serverError(err));
+        .catch(err => response.serverError({ error: err }));
     }
-
 };
 

@@ -9,13 +9,15 @@ module.exports = {
 
   attributes: {
 
-    id : { type: 'integer', required: true },
-    name : { type: 'integer', required: true },
+    id : { type: 'number', required: true },
+    name : { type: 'number', required: true },
     gender: { type: 'string' },
-    yearOfBirth : { type: 'integer' },
-    yearOfDeath : { type: 'integer' },
+
+    yearOfBirth : { type: 'number' },
+    yearOfDeath : { type: 'number' },
+
     placeOfBirth : { type: 'string' },
-    placeOfBirth : { type: 'url' },
+    placeOfDeath : { type: 'string' }
 
   },
 

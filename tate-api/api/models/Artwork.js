@@ -8,22 +8,21 @@
 module.exports = {
 
   attributes: {
-    id : { type: 'integer', required: true },
-    accession_number : { type: 'integer', required: true },
+    id : { type: 'number', required: true },
+    accession_number : { type: 'number', required: true },
     title: { type: 'string', required: true },
-    artistId : { type: 'integer', required: true },
-    year : { type: 'integer' },
-    acquisitionYear : { type: 'integer' },
-    dimensions : {
-        width : { type: 'integer' },
-        height : { type: 'integer' },
-        depth: { type: 'integer' },
-    },
-    thumbnail : {
+    artistId : { type: 'number', required: true },
+    year : { type: 'number' },
+    acquisitionYear : { type: 'number' },
+
+        width : { type: 'number' },
+        height : { type: 'number' },
+        depth: { type: 'number' },
+
         Copyright : { type: 'string' },
         thumbnailUrl : { type: 'string' },
         url : { type: 'string' },
-    }
+
   },
 
 };
