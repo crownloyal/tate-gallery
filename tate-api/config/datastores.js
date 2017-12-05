@@ -15,7 +15,6 @@
 
 module.exports.datastores = {
 
-
   /***************************************************************************
   *                                                                          *
   * Your app's default datastore.                                            *
@@ -53,14 +52,14 @@ module.exports.datastores = {
 
   },
 
-  mongodbServer: {
-    adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    // user: 'username', //optional
-    // password: 'password', //optional
-    database: 'tate-api' //optional
-  }
+    tatemongo: {
+        adapter: 'sails-mongo',
+        host: 'localhost',
+        port: 27017,
+        // user: 'username', //optional
+        // password: 'password', //optional
+        database: 'tate-db' //optional
+    }
 
 
 };

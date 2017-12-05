@@ -1,40 +1,37 @@
 /**
  * ArtworkController
  *
- * @description :: Server-side actions for handling incoming requests.
+ * @description :: Server-side actions for handling incoming reqs.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-    find(request, response) {
-        let artworkId = request.params.id;
+    findOne(req, res) {
+        let artworkId = req.params.id;
 
-            if (!artworkId) return response.badRequest({ err: 'missing post_id field' });
+        if (!artworkId) return res.badRequest({ err: 'missing artwork_id field' });
 
-            Artwork.findOne({ id: artworkId })
-                .populate('category')
-                .populate('user')
-                .then(_artwork => {
-
-                if (!_artwork) return response.notFound({ err: 'No post found' });
-
-                return response.ok(_artwork);
+        Artwork.findOne({ id: artworkId })
+            .populate('artwork')
+            .then(artwork => {
+                if (!artwork) return res.notFound({ err: 'No artwork found' });
+                return res.ok(artwork);
             })
-            .catch(err => response.serverError({ error: err }));
+        .catch(err => res.serverError({ error: err }));
     },
 
-    findAll(request, response) {
-        Artwork.find()
-        .populate('artwork')
-        .then(_artworks => {
+    find(req, res) {
+        Artwork.find({})
+        .then(artwork => sails.log(artwork))
+        .then(fetchedArtworks => {
 
-            if (!_artworks || _artworks.length === 0) {
-                throw new Error('No post found');
+            if (!fetchedArtworks || fetchedArtworks.length === 0) {
+                throw new Error('No artwork found');
             }
-            return response.ok(_artworks);
 
+            return res.ok(fetchedArtworks);
         })
-        .catch(err => response.serverError({ error: err }));
+        .catch(err => res.serverError({ error: err }));
     }
 };
 

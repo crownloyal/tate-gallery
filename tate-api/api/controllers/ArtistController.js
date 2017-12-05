@@ -1,39 +1,34 @@
 /**
  * ArtistController
  *
- * @description :: Server-side actions for handling incoming requests.
+ * @description :: Server-side actions for handling incoming reqs.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
 module.exports = {
-    find(request, response) {
-        let artistId = request.params.id;
+    findOne(req, res) {
+        let artistId = req.params.id;
 
-            if (!artistId) return response.badRequest({ error: 'missing artist_id' });
-
-            Artwork.findOne({ id: artistId })
-                .populate('artist')
-                .then(artist => {
-
-                if (!_artist) return response.notFound({ error: 'No matching artist found' });
-
-                return response.ok(_artist);
-            })
-            .catch(err => response.serverError({ error: err }));
+        Artwork.find({ id: artistId })
+        .then(artist => {
+            if (!artist) return res.notFound({ error: 'No matching artist found' });
+            return res.ok(artist);
+        })
+        .catch(err => res.serverError({ error: err }));
     },
 
-    findAll(request, response) {
+    find(req, res) {
         Artist.find()
-        .populate('artist')
-        .then(_artists => {
-
-            if (!_artists || _artists.length === 0) {
+        .then(artist => sails.log(artist))
+        .then(fetchedArtists => {
+            if (!fetchedArtists || fetchedArtists.length === 0) {
                 throw new Error('No artist found');
             }
-            return response.ok(_artists);
 
+            return res.ok(fetchedArtists);
         })
-        .catch(err => response.serverError({ error: err }));
+        .catch(err => res.serverError({ error: err }));
+
     }
 };
 

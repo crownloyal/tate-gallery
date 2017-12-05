@@ -15,7 +15,7 @@
 
 module.exports.models = {
 
-    connection: 'mongodbServer',
+    datastore: 'tatemongo',
 
   /***************************************************************************
   *                                                                          *

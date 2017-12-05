@@ -9,8 +9,8 @@ module.exports = {
 
   attributes: {
 
-    id : { type: 'number', required: true },
-    name : { type: 'number', required: true },
+    id : { type: 'string', required: true, columnName: '_id' },
+    name : { type: 'string', required: true },
     gender: { type: 'string' },
 
     yearOfBirth : { type: 'number' },
