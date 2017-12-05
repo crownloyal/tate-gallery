@@ -61,5 +61,4 @@ module.exports.datastores = {
         database: 'tate-db' //optional
     }
 
-
 };

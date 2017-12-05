@@ -20,18 +20,24 @@ module.exports = {
         .catch(err => res.serverError({ error: err }));
     },
 
-    find(req, res) {
-        Artwork.find({})
-        .then(artwork => sails.log(artwork))
-        .then(fetchedArtworks => {
+    findAll(req, res) {
+        let page = req.param('page');
 
-            if (!fetchedArtworks || fetchedArtworks.length === 0) {
-                throw new Error('No artwork found');
-            }
+        Artwork.count()
+        .exec((error, total) => {
 
-            return res.ok(fetchedArtworks);
-        })
-        .catch(err => res.serverError({ error: err }));
+            Artwork.find()
+            .paginate({ page, limit: 25 })
+            .then(fetchedArtworks => {
+
+                if (!fetchedArtworks || fetchedArtworks.length === 0) {
+                    throw new Error('No artwork found');
+                }
+
+                return res.json({ ...fetchedArtworks, total });
+            })
+            .catch(err => res.serverError({ error: err }));
+        });
     }
 };
 

@@ -7,24 +7,25 @@
 
 module.exports = {
 
-  attributes: {
-    id : { type: 'string', required: true, columnName: '_id' },
-    accession_number : { type: 'number', required: true },
-    title: { type: 'string', required: true },
-    year : { type: 'number' },
-    acquisitionYear : { type: 'number' },
+    tableName: 'artwork',
 
-    width : { type: 'number' },
-    height : { type: 'number' },
-    depth: { type: 'number' },
+    attributes: {
+        id : { type: 'string', required: true, columnName: '_id' },
+        accession_number : { type: 'number', required: true },
+        title: { type: 'string', required: true },
+        year : { type: 'number' },
+        acquisitionYear : { type: 'number' },
 
-    Copyright : { type: 'string' },
-    thumbnailUrl : { type: 'string' },
-    url : { type: 'string' },
+        width : { type: 'number' },
+        height : { type: 'number' },
+        depth: { type: 'number' },
 
-    artist : { model: 'artist', required: true },
+        Copyright : { type: 'string' },
+        thumbnailUrl : { type: 'string' },
+        url : { type: 'string' },
 
-  },
+        artist : { model: 'artist', required: true },
+    },
 
 };
 

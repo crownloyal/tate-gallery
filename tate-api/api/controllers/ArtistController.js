@@ -9,26 +9,48 @@ module.exports = {
     findOne(req, res) {
         let artistId = req.params.id;
 
-        Artwork.find({ id: artistId })
+        Artist.find({ id: artistId })
         .then(artist => {
+
             if (!artist) return res.notFound({ error: 'No matching artist found' });
             return res.ok(artist);
         })
         .catch(err => res.serverError({ error: err }));
     },
 
-    find(req, res) {
-        Artist.find()
-        .then(artist => sails.log(artist))
-        .then(fetchedArtists => {
-            if (!fetchedArtists || fetchedArtists.length === 0) {
-                throw new Error('No artist found');
-            }
+    findAll(req, res) {
+        let page = req.param('page');
 
-            return res.ok(fetchedArtists);
-        })
-        .catch(err => res.serverError({ error: err }));
+        Artist.count()
+        .exec((error, total) => {
 
+            Artist.find()
+            .paginate({ page, limit: 25 })
+            .then(fetchedArtists => {
+
+                if (!fetchedArtists || fetchedArtists.length === 0) {
+                    throw new Error('No artist found');
+                }
+
+                return res.json({ ...fetchedArtists, total });
+            })
+            .catch(err => res.serverError({ error: err }));
+        });
+    },
+
+    findAllArtwork(req, res) {
+        let artistId = req.params.id;
+
+        Artist.find({ id: artistId })
+            .populate('artworks')
+            .then(allArtwork => {
+                if(!allArtwork) {
+                    throw new Error(`No artwork found for artist ${artistId}.`);
+                }
+
+                return res.ok(allArtwork);
+            })
+            .catch(err => res.serverError({ error: err }));
     }
 };
 

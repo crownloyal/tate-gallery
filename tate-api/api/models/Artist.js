@@ -7,18 +7,21 @@
 
 module.exports = {
 
-  attributes: {
+    tableName: 'artist',
 
-    id : { type: 'string', required: true, columnName: '_id' },
-    name : { type: 'string', required: true },
-    gender: { type: 'string' },
+    attributes: {
 
-    yearOfBirth : { type: 'number' },
-    yearOfDeath : { type: 'number' },
+        name : { type: 'string', required: true },
+        gender: { type: 'string' },
 
-    placeOfBirth : { type: 'string' },
-    placeOfDeath : { type: 'string' }
+        yearOfBirth : { type: 'number' },
+        yearOfDeath : { type: 'number' },
 
-  },
+        placeOfBirth : { type: 'string' },
+        placeOfDeath : { type: 'string' },
+
+        artworks: { collection: 'artwork', via: 'artist'}
+
+    },
 
 };
