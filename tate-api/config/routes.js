@@ -27,28 +27,28 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
-    'GET /artists': {
+    'GET /api/artists': {
         controller: 'ArtistController',
         action: 'findAll',
         skipAssets: true
     },
-    'GET /artists/:id': {
+    'GET /api/artists/:id': {
         controller: 'ArtistController',
         action: 'findOne',
         skipAssets: true
     },
-    'GET /artists/:id/artworks': {
+    'GET /api/artists/:id/artworks': {
         controller: 'ArtistController',
         action: 'findAllArtwork',
         skipAssets: true
     },
 
-    'GET /artworks': {
+    'GET /api/artworks': {
         controller: 'ArtworkController',
         action: 'findAll',
         skipAssets: true
     },
-    'GET /artworks/:id': {
+    'GET /api/artworks/:id': {
         controller: 'ArtworkController',
         action: 'findOne',
         skipAssets: true
