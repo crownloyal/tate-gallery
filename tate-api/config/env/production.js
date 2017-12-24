@@ -250,10 +250,11 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://example.com',
-    //   'https://staging.example.com',
-    // ],
+    onlyAllowOrigins: [
+       'http://localhost',
+       'http://127.0.0.1',
+       'http://0.0.0.0',
+    ],
 
 
     /***************************************************************************
@@ -337,7 +338,7 @@ module.exports = {
   * this, just try deploying without setting it and see if it works.)       *
   *                                                                         *
   ***************************************************************************/
-  // port: 80,
+  port: 1337,
 
 
 
@@ -371,8 +372,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
-    internalEmailAddress: 'support@example.com',
+    baseUrl: 'https://localhost',
+    internalEmailAddress: 'dominic.brause@mycit.ie',
 
     // mailgunDomain: 'mg.example.com',
     // mailgunApiKey: 'key-prod_fake_bd32301385130a0bafe030c',

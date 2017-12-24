@@ -6,6 +6,7 @@
  */
 
 module.exports = {
+	/*
     findOne(req, res) {
         let artworkId = req.params.id;
 
@@ -38,6 +39,6 @@ module.exports = {
             })
             .catch(err => res.serverError({ error: err }));
         });
-    }
+    }*/
 };
 

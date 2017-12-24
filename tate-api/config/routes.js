@@ -27,7 +27,7 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
-    'GET /api/artists': {
+    /* 'GET /api/artists': {
         controller: 'ArtistController',
         action: 'findAll',
         skipAssets: true
@@ -52,7 +52,7 @@ module.exports.routes = {
         controller: 'ArtworkController',
         action: 'findOne',
         skipAssets: true
-    },
+    }, */
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
